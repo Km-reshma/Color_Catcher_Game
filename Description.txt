@@ -1,0 +1,28 @@
+const colors = [
+  "red", "blue", "green", "yellow",
+  "pink", "purple", "orange", "black",
+  "white", "gray", "brown", "cyan",
+  "magenta", "lime", "navy", "gold"
+];
+
+targetColor = colors[Math.floor(Math.random() * 16)];
+
+
+Math.random();
+Generates a random decimal number.
+The number is greater than or equal to 0 and less than 1.
+
+Example----
+0.12
+0.78
+0.004
+0.999
+
+Math.random() * 16
+This changes the range from:   0 → 1
+to :                           0 → 16
+
+Examples:----------------
+0.12 * 16 = 1.92
+0.78 * 16 = 12.48
+0.999 * 16 = 15.984
