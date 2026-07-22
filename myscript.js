@@ -15,12 +15,23 @@ const timeDisplay= document.getElementById("time")                   // these ar
 
 
 
-// to create a function to generate the random color 
+/*// to create a function to generate the random color 
 function getRandomColor(){
 
+}*/
+
+function shuffleArray(colors){
+
+    for(let i = colors.length -1; i>0; i--){
+
+        const j = Math.floor (Math.random()*(i+1));
+        [colors[i],colors[j]] = [colors[j],colors[i]];
+
+    }
+
+
+
 }
-
-
 
 
 
@@ -35,11 +46,37 @@ function createGrid(){                              // actual mein color generat
 
     // to change the color position which are written in array so,  we call function for shuffle the color position  ---- call
     colors = shuffleArray(colors);
-    targetColor= colors[Math.floor(Math.random()*16)];                     // target color 
-
+    targetColor= colors[Math.floor(Math.random()*16)];                     // target color find 
+    targetColorDisplay.textContent = targetColor;                          // for diplay the target color
+    
+    // to display the color using colors array (16 colors)
+    // har element ke forEach ka use karte hai
+    colors.forEach((color  => {
+        const box = document.createElement("div");                                              // dyanmically elemnent create "div"
+        box.className = "color-box";                                                            //.className -> ise se class attribute for css design  , 16 color box hoge uske class attribute "box-color" hoga
+        box.style.backgroundColor = color;
+        addEventListner('click', () => {handleClick(color);});                                  //color par click karna hai match krne ke liye we use evenhandle - jis mein ek arror function chale
+        grid.appendChild(box);
+    
+    })
 }
 
 
+
+
+
+// to create a handleClick(color) function
+
+function handleClick(clickedColor){
+
+    if(clickedColor === targetColor){
+        score++;
+        scoreDisplay.textContent =score;
+        createGrid();                                       // click ho cguka then grid fir se create and shuffle  
+    }
+
+
+}
 
 
 
