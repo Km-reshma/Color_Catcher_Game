@@ -1,15 +1,15 @@
-let targetcolor = "";
+let targetColor = "";
 let score = 0;                                    //score variable global and local =0 bcz we restart the game 
 let time =30;
 let timer;            // timer display ho , "setTime out " method 1 hi bar callback ko call krta hai jitn atie diya hai 
                       // setInterval = repeatedly call krta rhta hai 
                       // so we use "setInterval " -set intervals se jo  timer ki id milegi woh mein "timer variable" mein rkh rahi hu  bcz   jis e timer is clear when we restart the game .
 
-let colors =['red', 'orange', 'green', 'grey', 'black', 'hotpink', 'purple', 'yellow', 'teal', 'white', 'lightgreen', 'maroon', 'peach', 'khaki', 'navyblue', 'indigo'   ]
+let colors =['red', 'orange', 'green', 'grey', 'black', 'hotpink', 'purple', 'yellow', 'teal', 'white', 'lightgreen', 'maroon', 'peachpuff', 'khaki', 'navy', 'indigo'   ]
 const grid = document.getElementById("grid");
-const targetColorDisplay = document.getElementById("targetColor");
+const targetColorDisplay = document.getElementById("target-color");
 const scoreDisplay= document.getElementById("score");
-const timeDisplay= document.getElementById("time")                   // these are the object which is needed to use 
+const timeDisplay= document.getElementById("time");                   // these are the object which is needed to use 
 
 
 
@@ -29,6 +29,8 @@ function shuffleArray(colors){
 
     }
 
+    return colors;
+
 
 
 }
@@ -39,26 +41,32 @@ function shuffleArray(colors){
 
 
 //create grid function
-function createGrid(){                              // actual mein color generate karne hai 
+function createGrid(){                                                            // actual mein color generate karne hai 
 
-    grid.innerHtml="";                              // agar pahle se kuch hai use blank karne ke liye
-
+    grid.innerHTML="";                                                            // agar pahle se kuch hai use blank karne ke liye
 
     // to change the color position which are written in array so,  we call function for shuffle the color position  ---- call
+   
     colors = shuffleArray(colors);
-    targetColor= colors[Math.floor(Math.random()*16)];                     // target color find 
-    targetColorDisplay.textContent = targetColor;                          // for diplay the target color
+    console.log(colors);
+    targetColor= colors[Math.floor(Math.random()*colors.length)];                            // target color find 
+    targetColorDisplay.textContent = targetColor;                                 // for diplay the target color
     
     // to display the color using colors array (16 colors)
     // har element ke forEach ka use karte hai
-    colors.forEach((color  => {
+
+    colors.forEach((color)  => {
         const box = document.createElement("div");                                              // dyanmically elemnent create "div"
         box.className = "color-box";                                                            //.className -> ise se class attribute for css design  , 16 color box hoge uske class attribute "box-color" hoga
         box.style.backgroundColor = color;
-        addEventListner('click', () => {handleClick(color);});                                  //color par click karna hai match krne ke liye we use evenhandle - jis mein ek arror function chale
+
+        box.addEventListener("click", () => {
+                   handleClick(color);
+        });  
+                                                                                      //color par click karna hai match krne ke liye we use evenhandle - jis mein ek arror function chale
         grid.appendChild(box);
     
-    })
+    });
 }
 
 
@@ -81,11 +89,6 @@ function handleClick(clickedColor){
 
 
 
-//we create function for shuffle the color position
-function shuffleArray(colors){
-
-
-}
 
 
 
@@ -113,7 +116,7 @@ function startGame(){
         // if time 0 the stop the game 
         if(time===0){
             clearInterval(timer);
-            alert("Time's up! Your Final Score: "+=score);
+            alert("Time's up! Your Final Score: " + score);
         }
         
         }, 1000);
