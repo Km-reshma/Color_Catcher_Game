@@ -26,3 +26,53 @@ Examples:----------------
 0.12 * 16 = 1.92
 0.78 * 16 = 12.48
 0.999 * 16 = 15.984
+
+
+
+//Syntax-
+element.addEventListener(event, function);
+
+addEventListener('click', () => { handleClick(color)  });
+
+1. addEventListener(...)       : It tells JavaScript: "Listen for a specific event on this element."
+
+
+2. 'click'    :     This is the event type.
+
+It means:    "Run the function whenever the user clicks."
+
+Other events are:
+"mouseover"
+"keydown"
+"dblclick"
+"submit"
+"change"
+
+
+3. () => {}                 :           This is an arrow function.
+
+() => {
+                               // body
+}
+It is the function that runs when the click happens.
+
+Equivalent to:
+function () {
+
+}
+
+4.  handleClick(color);
+
+When the click occurs:
+
+handleClick(color);
+
+calls the function handleClick and passes color as an argument.
+
+Suppose:
+
+let color = "red";
+
+Then this becomes:
+
+handleClick("red");
