@@ -93,9 +93,6 @@ function handleClick(clickedColor){
 
 
 
-
-
-
 // to create function for start the game 
 function startGame(){
     score = 0;
@@ -120,8 +117,44 @@ function startGame(){
         }
         
         }, 1000);
+   
 
-    
-     
+}
+
+
+
+
+//create function for when we click the light and dark to clickable for change the color
+
+let darkButton = document.getElementById("dark");
+let lightButton = document.getElementById("light");
+
+
+lightButton.addEventListener('click',lightMode);
+darkButton.addEventListener('click',darkMode);
+
+
+
+function lightMode(){
+
+    document.body.style.backgroundColor = "#f0f0f0";
+    let gc = document.querySelector(".game-container"); 
+    gc.style.backgroundColor = "white";
+    gc.style.color="black";
+    DocumentFragment.getElementById("mode").style.boxShadow ="5px 5px 5px black";
+
+
+}
+
+
+
+function darkMode(){
+
+    document.body.style.backgroundColor = "#333333";
+    let gc = document.querySelector(".game-container"); 
+    gc.style.backgroundColor = "black";
+    gc.style.color="white";
+    DocumentFragment.getElementById("mode").style.boxShadow ="5px 5px 5px white";
+      
 
 }
