@@ -76,3 +76,98 @@ let color = "red";
 Then this becomes:
 
 handleClick("red");
+
+
+
+
+
+// __________ Array Shuffle Logic __________________________________
+
+
+Shuffle ka matlab :  Shuffle ka matlab hai array ke elements ka order random kar dena.
+
+Pehle:               [A", "B", "C", "D"]
+
+Shuffle ke baad:     ["C", "A", "D", "B"]
+
+Ya                   ["D", "B", "A", "C"]
+Har baar order alag ho sakta hai.
+
+lets take real example ---------------------
+
+Maan lo table par 4 cards pade hain:
+
+Index:   0   1   2   3
+Cards:   A   B   C   D
+
+Hum last card (D) se start karte hain.
+
+Step 1.......................................
+A  B  C  D
+         ↑
+         i = 3
+
+Ab D ko kisi bhi position par rakhna hai.
+
+Random index choose karte hain:
+
+j = 1
+
+Matlab D aur B ki position badal do.
+
+A  D  C  B
+
+
+Step 2....................................................
+
+Ab last position fix ho gayi. Usko dobara touch nahi karenge.
+
+Ab:
+
+A  D  C  B
+      ↑
+      i = 2
+
+Ab C ko 0, 1 ya 2 me se kisi bhi position par bhejna hai.
+
+Maan lo:
+
+j = 0
+
+Swap:
+
+C  D  A  B
+
+Step 3.............................................................
+
+Ab:
+
+C  D  A  B
+   ↑
+   i = 1
+
+Random:
+
+j = 1
+
+Swap same position se hua.
+
+Final:-------------------------------
+
+C  D  A  B
+
+Shuffle complete.
+
+Code..................................................................................
+function shuffle(arr) {
+
+    for (let i = arr.length - 1; i > 0; i--) {
+
+        let j = Math.floor(Math.random() * (i + 1));
+
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+
+    }
+
+    return arr;
+}
